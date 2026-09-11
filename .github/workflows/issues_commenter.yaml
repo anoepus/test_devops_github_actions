@@ -8,5 +8,10 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - name: "Dump GitHub context"
-        run: echo '${{ toJson(github) }}'
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+              **NICE ISSUE BUDDY** \n :) 
+          reactions: '+1'
